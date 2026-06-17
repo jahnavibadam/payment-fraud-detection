@@ -8,5 +8,6 @@ public record RiskBreakdown(
     int copScore,
     int behaviouralScore,
     int channelScore,
-    int ipScore
+    int ipScore,
+    int purposeScore
 ) {}

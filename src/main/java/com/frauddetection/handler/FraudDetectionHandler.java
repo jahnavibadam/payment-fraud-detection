@@ -145,7 +145,8 @@ public class FraudDetectionHandler implements RequestHandler<APIGatewayProxyRequ
                             assessment.copScore(),
                             assessment.behaviouralScore(),
                             assessment.channelScore(),
-                            assessment.ipScore()
+                            assessment.ipScore(),
+                            assessment.purposeScore()
                         ),
                         decision.topRiskFactors(),
                         Instant.now()
@@ -248,9 +249,13 @@ public class FraudDetectionHandler implements RequestHandler<APIGatewayProxyRequ
         IpIntelligence ipIntelligence = (request.channel() != null)
                 ? request.channel().ipIntelligence() : null;
 
+        // Extract purpose analysis from the channel if present
+        PurposeAnalysis purposeAnalysis = (request.channel() != null)
+                ? request.channel().purposeAnalysis() : null;
+
         try {
             return CompletableFuture
-                .supplyAsync(() -> riskScoringEngine.score(request, profile, beneficiaryStatus, ipIntelligence))
+                .supplyAsync(() -> riskScoringEngine.score(request, profile, beneficiaryStatus, ipIntelligence, purposeAnalysis))
                 .get(SCORING_TIMEOUT_MS, TimeUnit.MILLISECONDS);
         } catch (TimeoutException e) {
             logger.warn("Risk scoring timed out after {}ms for messageId={}",
@@ -274,7 +279,7 @@ public class FraudDetectionHandler implements RequestHandler<APIGatewayProxyRequ
             request.messageId(),
             Decision.REVIEW,
             0,
-            new RiskBreakdown(0, 0, 0, 0, 0),
+            new RiskBreakdown(0, 0, 0, 0, 0, 0),
             List.of(timeoutFactor),
             Instant.now()
         );

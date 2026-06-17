@@ -10,5 +10,6 @@ public record Channel(
     String deviceId,
     GeoLocation geoLocation,
     Duration sessionDuration,
-    IpIntelligence ipIntelligence
+    IpIntelligence ipIntelligence,
+    PurposeAnalysis purposeAnalysis
 ) {}

@@ -12,5 +12,6 @@ public record RiskAssessment(
     int behaviouralScore,
     int channelScore,
     int ipScore,
+    int purposeScore,
     List<RiskFactor> riskFactors
 ) {}

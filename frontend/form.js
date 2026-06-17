@@ -51,6 +51,10 @@ const PaymentForm = {
       ipIsHighRiskGeo: this._form.querySelector('#ip-is-high-risk-geo').checked,
       ipVelocityFlag: this._form.querySelector('#ip-velocity-flag').checked,
       ipIsNewIp: this._form.querySelector('#ip-is-new-ip').checked,
+      purposeCategory: this._form.querySelector('#purpose-category').value,
+      scamIndicator: this._form.querySelector('#scam-indicator').value,
+      confidenceScore: this._form.querySelector('#confidence-score').value.trim(),
+      historicalDeviation: this._form.querySelector('#historical-deviation').checked,
     };
   },
 

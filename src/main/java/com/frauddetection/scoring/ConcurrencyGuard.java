@@ -47,7 +47,7 @@ public class ConcurrencyGuard {
             request.messageId(),
             Decision.REVIEW,
             0,
-            new RiskBreakdown(0, 0, 0, 0, 0),
+            new RiskBreakdown(0, 0, 0, 0, 0, 0),
             List.of(new RiskFactor("CAPACITY", "System capacity exceeded; request queued for review")),
             Instant.now()
         );

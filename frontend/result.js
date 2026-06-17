@@ -185,6 +185,9 @@ const ResultDisplay = {
     if (breakdown.ipScore !== undefined && breakdown.ipScore !== null) {
       html += '<div class="risk-breakdown-item">IP Score: <span>' + breakdown.ipScore + '</span></div>';
     }
+    if (breakdown.purposeScore !== undefined && breakdown.purposeScore !== null) {
+      html += '<div class="risk-breakdown-item">Purpose Score: <span>' + breakdown.purposeScore + '</span></div>';
+    }
     html += '</div>';
     return html;
   },

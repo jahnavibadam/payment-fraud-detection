@@ -58,7 +58,8 @@ public class TimeoutCircuitBreaker {
                 assessment.copScore(),
                 assessment.behaviouralScore(),
                 assessment.channelScore(),
-                assessment.ipScore()
+                assessment.ipScore(),
+                assessment.purposeScore()
             ),
             assessment.riskFactors(),
             Instant.now()
@@ -74,7 +75,7 @@ public class TimeoutCircuitBreaker {
             request.messageId(),
             Decision.REVIEW,
             0,
-            new RiskBreakdown(0, 0, 0, 0, 0),
+            new RiskBreakdown(0, 0, 0, 0, 0, 0),
             List.of(timeoutFactor),
             Instant.now()
         );
@@ -89,7 +90,7 @@ public class TimeoutCircuitBreaker {
             request.messageId(),
             Decision.REVIEW,
             0,
-            new RiskBreakdown(0, 0, 0, 0, 0),
+            new RiskBreakdown(0, 0, 0, 0, 0, 0),
             List.of(errorFactor),
             Instant.now()
         );

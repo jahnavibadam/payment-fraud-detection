@@ -487,6 +487,47 @@
                 </div>
             </fieldset>
 
+            <!-- Purpose Analysis Section -->
+            <fieldset class="form-section">
+                <h2>Purpose Analysis</h2>
+
+                <div class="form-group">
+                    <label for="purpose-category">Purpose Category</label>
+                    <select id="purpose-category" name="purposeCategory">
+                        <option value="">-- None (use keyword detection only) --</option>
+                        <option value="PERSONAL_TRANSFER">PERSONAL_TRANSFER</option>
+                        <option value="BILL_PAYMENT">BILL_PAYMENT</option>
+                        <option value="PURCHASE">PURCHASE</option>
+                        <option value="INVESTMENT">INVESTMENT</option>
+                        <option value="CHARITY">CHARITY</option>
+                        <option value="UNKNOWN">UNKNOWN</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="scam-indicator">Scam Indicator</label>
+                    <select id="scam-indicator" name="scamIndicator">
+                        <option value="NONE">NONE</option>
+                        <option value="INVESTMENT_SCAM">INVESTMENT_SCAM</option>
+                        <option value="ROMANCE_SCAM">ROMANCE_SCAM</option>
+                        <option value="IMPERSONATION">IMPERSONATION</option>
+                        <option value="INVOICE_REDIRECTION">INVOICE_REDIRECTION</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="confidence-score">Confidence Score (0.0 - 1.0)</label>
+                    <input type="text" id="confidence-score" name="confidenceScore"
+                           placeholder="0.9">
+                </div>
+
+                <div class="form-group">
+                    <label for="historical-deviation">
+                        <input type="checkbox" id="historical-deviation" name="historicalDeviation"> Historical Deviation (first-time pattern)
+                    </label>
+                </div>
+            </fieldset>
+
             <!-- Submit Button -->
             <button type="submit" id="submit-btn" class="btn btn-primary">
                 <span class="btn-text">Check Payment</span>

@@ -101,6 +101,18 @@ const App = {
       };
     }
 
+    // Build purpose analysis object if any purpose fields are populated
+    var purposeAnalysis = null;
+    if (formData.purposeCategory || formData.scamIndicator !== 'NONE' || formData.historicalDeviation) {
+      purposeAnalysis = {
+        declaredPurpose: formData.paymentReference || null,
+        purposeCategory: formData.purposeCategory || null,
+        scamIndicator: formData.scamIndicator || 'NONE',
+        confidenceScore: formData.confidenceScore ? parseFloat(formData.confidenceScore) : 0.9,
+        historicalDeviation: formData.historicalDeviation
+      };
+    }
+
     return {
       messageId: this._generateUUID(),
       debtorAccount: {
@@ -125,7 +137,8 @@ const App = {
         deviceId: null,
         geoLocation: null,
         sessionDuration: null,
-        ipIntelligence: ipIntelligence
+        ipIntelligence: ipIntelligence,
+        purposeAnalysis: purposeAnalysis
       },
       timestamp: new Date().toISOString()
     };
